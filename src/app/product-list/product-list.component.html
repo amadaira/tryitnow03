@@ -1,0 +1,37 @@
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
+<h2>Partidos </h2>
+
+<!--Bucle que recorre todos los productos--> 
+
+<!-- The RouterLink directive helps you customize the anchor element. In this case, the route, or URL, contains one fixed segment, /products. The final segment is variable, inserting the id property of the current product. For example, the URL for a product with an id of 1 would be similar to https://getting-started-myfork.stackblitz.io/products/1
+-->
+<div *ngFor="let product of products">
+  <h3>
+    <a [title]="' detalles de 'product.name"
+       [routerLink]="['/products', product.id]"
+       >
+      {{ product.name }}
+    </a>
+</h3>
+<p *ngIf="product.description">
+  Descripción: {{ product.description }}
+  Precio: {{product.price}}
+</p>
+
+<!--Agregamos el componente para permitir
+notificarnos en funcion del precio-->
+
+<button type="button" (click)="share()">
+  Comparte
+</button>
+
+<!--Finally, to display ProductAlertsComponent as a child of ProductListComponent, add the <app-product-alerts> element to product-list.component.html. Pass the current product as input to the component using property binding-->
+<app-product-alerts
+  [product]="product">
+  (notify)="onNotify()">
+</app-product-alerts>
+</div>

@@ -1,0 +1,6 @@
+<p>product-alerts works!</p>
+<p *ngIf="product && product.price > 7">
+  <!--In product-alerts.component.html, update the Notify Me button with an event binding to call the notify.emit() method.
+  -->
+  <button type="button" (click)="notify.emit()">Notifícame</button>
+</p>
